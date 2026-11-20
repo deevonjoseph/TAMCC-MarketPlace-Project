@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Student Marketplace for TAMCC — interface design showcase</title>
+<meta name="description" content="Prototype interface design for Student Marketplace for TAMCC, PMT226 capstone project.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23e4e7db'/%3E%3Cpath d='M8 24V8h.7L16 20l7.3-12h.7v16' fill='none' stroke='%231d3f91' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="running">
+  <div class="wrap">
+    <b>Student Marketplace for TAMCC</b>
+    <nav aria-label="Screens">
+      <a href="#browse">Browse</a>
+      <a href="#listing">Listing</a>
+      <a href="#create">Create</a>
+      <a href="#moderate">Moderate</a>
+      <a href="#signin">Sign in</a>
+      <a href="#trace">Traceability</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===================== FLYLEAF ===================== -->
+  <section class="flyleaf">
+    <div class="fold" aria-hidden="true"></div>
+    <div class="wrap leaf-grid">
+
+      
+
+      <div class="title-stack">
+      <div class="titleblock">
+        <p class="course">PMT226 Capstone Project · Design showcase · Version 1.0</p>
+        <h1>Student Marketplace for <em>TAMCC</em></h1>
+        <p class="sub">A responsive web marketplace where TAMCC students list and find used textbooks, calculators, laptops, stationery and other school supplies, with one moderator reviewing reported listings. Five screens, seven requirements, one book.</p>
+        <p class="team">Deevon Joseph <span>· design and documentation</span> &nbsp;&nbsp; Jahred Dominique <span>· development and testing</span></p>
+      </div>
+
+      <div class="hero-actions">
+        <a class="pocket" href="#browse">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z"/></svg>
+          Open the browse screen
+        </a>
+        <a class="ghost-link" href="#trace">See which requirement each screen answers</a>
+      </div>
+
+      <p class="synthetic">Prototype with synthetic demonstration data. No real accounts, listings or messages exist, and no payment or delivery takes place.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== BROWSE ===================== -->
+  <section class="screen" id="browse">
+    <div class="wrap">
+      <div class="screen-head">
+        <p class="fr">FR-03</p>
+        <h2>Browse and search</h2>
+        <p class="lede">Filter column on the left, result cards on the right. Under 768 pixels the filters move above the results.</p>
+      </div>
+
+      <div class="insert-frame">
+        <div class="frame-main">
+          <div class="insert">
+            <div class="app">
+              <div class="app-bar">
+                <a class="mark" href="#browse">Student Marketplace for TAMCC</a>
+                <label class="app-search">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                  <input type="search" placeholder="Search listings" aria-label="Search listings">
+                </label>
+                <span class="who"><span class="avatar" aria-hidden="true">AJ</span> Aisha C.</span>
+              </div>
+
+              <div class="app-body">
+                <form class="filters" id="filter-form">
+                  <h3>Filters</h3>
+                  <fieldset>
+                    <legend>Category</legend>
+                    <label class="check"><input type="checkbox" name="cat" value="textbook" checked> Textbook</label>
+                    <label class="check"><input type="checkbox" name="cat" value="calculator" checked> Calculator</label>
+                    <label class="check"><input type="checkbox" name="cat" value="laptop" checked> Laptop</label>
+                    <label class="check"><input type="checkbox" name="cat" value="stationery" checked> Stationery</label>
+                    <label class="check"><input type="checkbox" name="cat" value="uniform" checked> Uniform</label>
+                    <label class="check"><input type="checkbox" name="cat" value="other" checked> Other school supplies</label>
+                  </fieldset>
+                  <fieldset>
+                    <legend>Price (XCD)</legend>
+                    <div class="price-pair">
+                      <input type="number" id="min-price" value="0" aria-label="Minimum price" min="0">
+                      <span>to</span>
+                      <input type="number" id="max-price" value="1500" aria-label="Maximum price" min="0">
+                    </div>
+                  </fieldset>
+                  <button class="btn btn-primary btn-block" type="submit">Apply filters</button>
+                </form>
+
+                <div>
+                  <div class="results-head">
+                    <p class="count"><b id="result-count">6</b> items match</p>
+                    <label class="sort">Sort
+                      <select id="sort" aria-label="Sort results">
+                        <option value="newest">Newest first</option>
+                        <option value="low">Lowest price</option>
+                        <option value="high">Highest price</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <div class="listings" id="listings">
+                    <article class="listing" data-price="95" data-cat="textbook" data-new="5">
+                      <div class="shot" aria-label="No item photo uploaded"></div>
+                      <h4>Calculus: Early Transcendentals, 8th edition</h4>
+                      <p class="meta">Textbook · Good · Listed 2 days ago</p>
+                      <div class="row"><span class="price" data-value="95">XCD 95.00</span><span class="status available">Available</span></div>
+                    </article>
+                    <article class="listing" data-price="60" data-cat="calculator" data-new="4">
+                      <div class="shot" aria-label="No item photo uploaded"></div>
+                      <h4>Casio FX-991EX scientific calculator</h4>
+                      <p class="meta">Calculator · Fair · Listed 3 days ago</p>
+                      <div class="row"><span class="price" data-value="60">XCD 60.00</span><span class="status available">Available</span></div>
+                    </article>
+                    <article class="listing" data-price="1150" data-cat="laptop" data-new="6">
+                      <div class="shot" aria-label="No item photo uploaded"></div>
+                      <h4>Lenovo ThinkPad, 8 GB RAM, 256 GB SSD</h4>
+                      <p class="meta">Laptop · Used · Listed today</p>
+                      <div class="row"><span class="price" data-value="1150">XCD 1,150.00</span><span class="status sold" data-stamp>Sold</span></div>
+                    </article>
+                    <article class="listing" data-price="12" data-cat="stationery" data-new="3">
+                      <div class="shot" aria-label="No item photo uploaded"></div>
+                      <h4>Examination pad, 200 sheets, ruled</h4>
+                      <p class="meta">Stationery · New · Listed 4 days ago</p>
+                      <div class="row"><span class="price" data-value="12">XCD 12.00</span><span class="status available">Available</span></div>
+                    </article>
+                    <article class="listing" data-price="45" data-cat="uniform" data-new="2">
+                      <div class="shot" aria-label="No item photo uploaded"></div>
+                      <h4>College uniform shirt, size M</h4>
+                      <p class="meta">Uniform · Good · Listed 6 days ago</p>
+                      <div class="row"><span class="price" data-value="45">XCD 45.00</span><span class="status available">Available</span></div>
+                    </article>
+                    <article class="listing" data-price="70" data-cat="textbook" data-new="1">
+                      <div class="shot" aria-label="No item photo uploaded"></div>
+                      <h4>Introduction to Sociology, Caribbean edition</h4>
+                      <p class="meta">Textbook · Good · Listed 8 days ago</p>
+                      <div class="row"><span class="price" data-value="70">XCD 70.00</span><span class="status available">Available</span></div>
+                    </article>
+                  </div>
+
+                  <div class="empty" id="empty-state" hidden>
+                    <p>No listings match those filters.</p>
+                    <small>Widen the price range or clear a category to see more items.</small><br>
+                    <button class="btn btn-quiet btn-sm" type="button" id="clear-filters">Clear filters</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LISTING DETAIL ===================== -->
+  <section class="screen" id="listing">
+    <div class="wrap">
+      <div class="screen-head">
+        <p class="fr">FR-04 · FR-05</p>
+        <h2>Listing detail</h2>
+        <p class="lede">The buyer reads the item, contacts the seller, and the seller changes the status. A sold listing keeps its page and hides the contact action.</p>
+      </div>
+
+      <div class="insert-frame">
+        <div class="frame-main">
+          <div class="insert">
+            <div class="app">
+              <div class="app-bar">
+                <a class="mark" href="#browse">Student Marketplace for TAMCC</a>
+                <label class="app-search">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                  <input type="search" placeholder="Search listings" aria-label="Search listings">
+                </label>
+                <span class="who"><span class="avatar" aria-hidden="true">AJ</span> Aisha C.</span>
+              </div>
+
+              <div class="app-body solo">
+                <div class="detail">
+                  <div>
+                    <div class="shot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.4h3.1l1.5-2.1h8.8l1.5 2.1H21v10.2H3z"/><circle cx="12" cy="13.3" r="3.3"/></svg><span>Listing photo</span></div>
+                    <p class="meta" style="font-family:var(--ui);font-size:.78rem;color:var(--ink-soft);margin:.55rem 0 0">One photograph, JPG or PNG, under 3 MB.</p>
+                  </div>
+                  <div>
+                    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+                      <span class="tag">Textbook</span>
+                      <span class="status available">Available</span>
+                    </div>
+                    <h3>Calculus: Early Transcendentals, 8th edition</h3>
+                    <span class="price">XCD 95.00</span>
+
+                    <table class="spec">
+                      <tbody>
+                        <tr><th scope="row">Condition</th><td>Good</td></tr>
+                        <tr><th scope="row">Category</th><td>Textbook</td></tr>
+                        <tr><th scope="row">Listed</th><td>2 days ago</td></tr>
+                        <tr><th scope="row">Seller</th><td>T. Joseph</td></tr>
+                        <tr><th scope="row">Listing ID</th><td>MLS-0042</td></tr>
+                      </tbody>
+                    </table>
+
+                    <p style="font-family:var(--serif);font-size:.95rem;line-height:1.6;margin:.85rem 0 0">Barely used, two semesters of notes in the margins. Cover has a bent corner, pages are clean. Collect on campus.</p>
+
+                    <div class="actions">
+                      <button class="btn btn-primary" type="button">Contact seller</button>
+                      <button class="btn btn-quiet" type="button">Report listing</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="inbox" style="margin-top:1.1rem">
+                  <div class="head">Messages about this listing</div>
+                  <div class="msg unread">
+                    <span class="avatar" aria-hidden="true">AC</span>
+                    <div class="body">
+                      <div class="who">Aisha Charles <span class="when">· 10:42</span></div>
+                      <p>Is the calculus book still available? I need it for next week.</p>
+                    </div>
+                  </div>
+                  <div class="msg">
+                    <span class="avatar" aria-hidden="true">TJ</span>
+                    <div class="body">
+                      <div class="who">Tiffany Joseph <span class="when">· 10:55</span></div>
+                      <p>Yes it is. I am on campus Thursday after two, near the library.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="frame-side notes">
+          <div class="note-card">
+            <h3>Contact, then decide</h3>
+            <p>The platform hands the two students a conversation and stops there. Payment, delivery and identity checks stay outside the product.</p>
+          </div>
+          <div class="note-card">
+            <h3>Report is always visible</h3>
+            <p>Every listing detail carries the report action with a fixed list of reasons, so a suspicious item reaches the moderator in one step.</p>
+          </div>
+          <div class="note-card stamp-note">
+            <h3>Sold keeps its record</h3>
+            <p>The page stays, the status changes, the contact button disappears. A marketplace that deletes sold items loses the history buyers rely on.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CREATE LISTING ===================== -->
+  <section class="screen" id="create">
+    <div class="wrap">
+      <div class="screen-head">
+        <p class="fr">FR-02</p>
+        <h2>Create a listing</h2>
+        <p class="lede">Six fields, four required, one photograph. Category and condition come from a fixed list so the browse filters stay useful.</p>
+      </div>
+
+      <div class="insert-frame">
+        <div class="frame-main">
+          <div class="insert">
+            <div class="app">
+              <div class="app-bar">
+                <a class="mark" href="#browse">Student Marketplace for TAMCC</a>
+                <span class="who"><span class="avatar" aria-hidden="true">TJ</span> Tiffany J.</span>
+              </div>
+
+              <div class="app-body solo">
+                <form id="listing-form" novalidate>
+                  <div class="form-grid">
+                    <div class="field full">
+                      <label for="f-title">Title <span class="req" aria-hidden="true">*</span></label>
+                      <input id="f-title" name="title" value="Calculus: Early Transcendentals, 8th edition" required>
+                    </div>
+
+                    <div class="field full">
+                      <label for="f-desc">Description</label>
+                      <textarea id="f-desc" name="desc">Barely used, two semesters of notes in the margins. Cover has a bent corner, pages are clean. Collect on campus.</textarea>
+                      <span class="hint">Say what is worn, which course it was used for, and where you can meet.</span>
+                    </div>
+
+                    <div class="field">
+                      <label for="f-cat">Category <span class="req" aria-hidden="true">*</span></label>
+                      <select id="f-cat" name="cat">
+                        <option>Textbook</option>
+                        <option>Calculator</option>
+                        <option>Laptop</option>
+                        <option>Stationery</option>
+                        <option>Uniform</option>
+                        <option>Other school supplies</option>
+                      </select>
+                    </div>
+
+                    <div class="field">
+                      <label for="f-cond">Condition <span class="req" aria-hidden="true">*</span></label>
+                      <select id="f-cond" name="cond">
+                        <option>New</option>
+                        <option selected>Good</option>
+                        <option>Fair</option>
+                        <option>Used</option>
+                      </select>
+                    </div>
+
+                    <div class="field error">
+                      <label for="f-price">Price (XCD) <span class="req" aria-hidden="true">*</span></label>
+                      <input id="f-price" name="price" value="-5" inputmode="decimal" aria-describedby="f-price-err" aria-invalid="true">
+                      <span class="err" id="f-price-err">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4"/><path d="M12 17.2v.1"/></svg>
+                        Enter a price greater than zero
+                      </span>
+                    </div>
+
+                    <div class="field">
+                      <span class="hint" style="font-weight:600;color:var(--ink)">Photo <span class="req" aria-hidden="true">*</span></span>
+                      <div class="drop">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+                        <span>calculus-8th.jpg · 1.4 MB · JPG</span>
+                      </div>
+                      <span class="hint">JPG or PNG, under 3 MB. One photograph per listing.</span>
+                    </div>
+                  </div>
+
+                  <div class="form-actions">
+                    <button class="btn btn-primary" type="submit">Publish listing</button>
+                    <button class="btn btn-quiet" type="reset">Cancel</button>
+                    <span class="hint">Fields marked with an asterisk are required.</span>
+                  </div>
+
+                  <div class="toast" id="publish-toast" hidden>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 12.5 5.5 5.5L20 7"/></svg>
+                    <span>Listing saved. It now appears in search results.</span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="frame-side notes">
+          <div class="note-card">
+            <h3>Errors sit with the field</h3>
+            <p>The message appears under the field that failed and names the fix. Nothing pops up in the middle of the screen to interrupt typing.</p>
+          </div>
+          <div class="note-card">
+            <h3>Fixed lists, free text</h3>
+            <p>Category, condition and reason are chosen, never typed. Description is free, because only the seller knows what they are selling.</p>
+          </div>
+          <div class="note-card stamp-note">
+            <h3>Prices are positive</h3>
+            <p>The validation rule in the design specification reads: price must be a positive number in XCD. This form shows the rule failing on purpose.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MODERATOR QUEUE ===================== -->
+  <section class="screen" id="moderate">
+    <div class="wrap">
+      <div class="screen-head">
+        <p class="fr">FR-06 · FR-07</p>
+        <h2>Moderator queue</h2>
+        <p class="lede">Reported listings wait here for a decision. A student reports, a moderator hides or restores, and every decision is written down.</p>
+      </div>
+
+      <div class="insert-frame">
+        <div class="frame-main">
+          <div class="insert">
+            <div class="app">
+              <div class="app-bar">
+                <a class="mark" href="#browse">Student Marketplace for TAMCC</a>
+                <span class="who"><span class="avatar" aria-hidden="true">MD</span> Moderator</span>
+              </div>
+
+              <div class="app-body solo">
+                <table class="queue-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Listing</th>
+                      <th scope="col">Reason</th>
+                      <th scope="col">Reports</th>
+                      <th scope="col">Age</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="queue-body">
+                    <tr>
+                      <td data-label="Listing" class="item">Used laptop, XCD 300</td>
+                      <td data-label="Reason">Price seems too low</td>
+                      <td data-label="Reports" class="num">2</td>
+                      <td data-label="Age" class="num">1 day</td>
+                      <td data-label="Action">
+                        <span class="queue-actions">
+                          <button class="btn btn-danger btn-sm" type="button" data-decide="hide">Hide</button>
+                          <button class="btn btn-quiet btn-sm" type="button" data-decide="restore">Restore</button>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Listing" class="item">Scientific calculator, XCD 15</td>
+                      <td data-label="Reason">Seller will not answer</td>
+                      <td data-label="Reports" class="num">1</td>
+                      <td data-label="Age" class="num">2 days</td>
+                      <td data-label="Action">
+                        <span class="queue-actions">
+                          <button class="btn btn-danger btn-sm" type="button" data-decide="hide">Hide</button>
+                          <button class="btn btn-quiet btn-sm" type="button" data-decide="restore">Restore</button>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Listing" class="item">Geometry set, XCD 15</td>
+                      <td data-label="Reason">Duplicate listing</td>
+                      <td data-label="Reports" class="num">1</td>
+                      <td data-label="Age" class="num">3 days</td>
+                      <td data-label="Action">
+                        <span class="queue-actions">
+                          <button class="btn btn-danger btn-sm" type="button" data-decide="hide">Hide</button>
+                          <button class="btn btn-quiet btn-sm" type="button" data-decide="restore">Restore</button>
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="queue-reason">
+                  <div class="field">
+                    <label for="f-reason">Decision reason <span class="req" aria-hidden="true">*</span></label>
+                    <input id="f-reason" value="Listing breaks the marketplace rules">
+                  </div>
+                  <button class="btn btn-primary" type="button" id="record-decision">Record decision</button>
+                </div>
+
+                <p class="queue-note" id="queue-status">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4"/><path d="M12 17.2v.1"/></svg>
+                  Only a moderator account can open this screen. The reporter's name appears here and nowhere else.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="frame-side notes">
+          <div class="note-card">
+            <h3>One queue, no dashboard</h3>
+            <p>The moderator gets a table and two buttons. Reports arrive with a reason, a count and an age, so the oldest problem is read first.</p>
+          </div>
+          <div class="note-card">
+            <h3>Every decision is written</h3>
+            <p>Hiding or restoring writes a row with the account, the reason and the date. The audit trail is what lets the lecturer check the feature.</p>
+          </div>
+          <div class="note-card stamp-note">
+            <h3>False reports are a risk</h3>
+            <p>Any student can report, so a report could be used to hide a rival's listing. The register records this as risk R-11 with a response and a trigger.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SIGN IN ===================== -->
+  <section class="screen" id="signin">
+    <div class="wrap">
+      <div class="screen-head">
+        <p class="fr">FR-01</p>
+        <h2>Sign in and register</h2>
+        <p class="lede">Guests may read every listing. Publishing, contacting, reporting and moderating all require an account.</p>
+      </div>
+
+      <div class="insert-frame">
+        <div class="frame-main">
+          <div class="insert">
+            <div class="app">
+              <div class="app-bar">
+                <a class="mark" href="#browse">Student Marketplace for TAMCC</a>
+              </div>
+              <div class="app-body solo">
+                <div class="auth">
+                  <div class="banner">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4"/><path d="M12 17.2v.1"/></svg>
+                    <span>No account matches that email and password.</span>
+                  </div>
+                  <h3>Sign in</h3>
+                  <p class="sub">Use your college email address.</p>
+                  <form id="signin-form" novalidate>
+                    <div class="field">
+                      <label for="f-email">Email address</label>
+                      <input id="f-email" type="email" value="aisha.charles@tcc.edu.gd" autocomplete="email">
+                    </div>
+                    <div class="field">
+                      <label for="f-pass">Password</label>
+                      <input id="f-pass" type="password" value="············" autocomplete="current-password">
+                    </div>
+                    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                  </form>
+                  <p class="fine">New here? <a href="#create">Create an account</a> with your name, email and a password of at least 8 characters.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="frame-side notes">
+          <div class="note-card">
+            <h3>Reading needs no account</h3>
+            <p>A student who only wants to check a price never fills in a form. The account starts at the moment they want to act.</p>
+          </div>
+          <div class="note-card">
+            <h3>Only what the product needs</h3>
+            <p>Name, email, password. No address, no payment details, no student record lookup. The password is stored as a hash.</p>
+          </div>
+          <div class="note-card stamp-note">
+            <h3>Failed attempts are logged</h3>
+            <p>The error names the problem and the session expires after inactivity, both taken from the input specification IN-01 and IN-02.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRACEABILITY ===================== -->
+  <section class="trace" id="trace">
+    <div class="wrap">
+      <h2>Every requirement has a screen</h2>
+      <ol>
+        <li><span class="id">FR-01</span><span class="what">A student must be able to register and sign in</span><span class="where">Sign in screen · IN-01, IN-02</span></li>
+        <li><span class="id">FR-02</span><span class="what">A student must be able to create, edit and delete a listing</span><span class="where">Create a listing · IN-03</span></li>
+        <li><span class="id">FR-03</span><span class="what">A student must be able to search and filter by keyword, category and price</span><span class="where">Browse and search · IN-04, OUT-01</span></li>
+        <li><span class="id">FR-04</span><span class="what">A student must be able to contact the seller</span><span class="where">Listing detail · IN-05, OUT-03</span></li>
+        <li><span class="id">FR-05</span><span class="what">A seller must be able to mark a listing available or sold</span><span class="where">Listing detail · IN-06</span></li>
+        <li><span class="id">FR-06</span><span class="what">A student must be able to report a suspicious listing</span><span class="where">Listing detail · IN-07</span></li>
+        <li><span class="id">FR-07</span><span class="what">A moderator must be able to review reported listings and hide or restore them</span><span class="where">Moderator queue · IN-08, OUT-05</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===================== COLOPHON ===================== -->
+  <footer class="colophon">
+    <div class="wrap leaf-grid">
+      <div class="credits">
+        <b>Student Marketplace for TAMCC</b><br>
+        PMT226 Capstone Project, AY 2026-2027<br>
+        Deevon Joseph · design and documentation<br>
+        Jahred Dominique · development and testing<br><br>
+        Prototype version 1.0, 20 November 2026<br>
+        Static prototype. No backend, no database.
+      </div>
+      <h2>What this product refuses to do</h2>
+      <div class="out">
+        Out of scope in this version
+        <ul>
+          <li>Payment of any kind</li>
+          <li>Delivery or shipping</li>
+          <li>Identity verification</li>
+          <li>Artificial intelligence screening</li>
+          <li>Seller ratings and reviews</li>
+          <li>Integration with college records</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
